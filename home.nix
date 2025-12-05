@@ -2,7 +2,7 @@
 
 {
   imports = [
-  inputs.dms.homeModules.dankMaterialShell.default
+  inputs.dankMaterialShell.homeModules.dankMaterialShell.default
   ];
 
   programs.dankMaterialShell = {
