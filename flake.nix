@@ -24,7 +24,6 @@
     ...
   } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
       specialArgs = {inherit inputs;};
       modules = [
         ./configuration.nix
@@ -33,7 +32,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.elghazaly = import ./home.nix;
+            users.elghazaly = ./home.nix;
             backupFileExtension = "backup";
             extraSpecialArgs = {
               inherit inputs;

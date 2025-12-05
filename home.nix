@@ -17,8 +17,6 @@
     };
   };
 
-  home.username = "elghazaly";
-  home.homeDirectory = "/home/elghazaly";
   programs.git.enable = true;
   home.stateVersion = "26.05";
   programs.bash = {
@@ -27,8 +25,6 @@
       btw = "echo i use nixos, btw";
     };
   };
-
-  programs.home-manager.enable = true;
 
   programs.emacs = {
     enable = true;
