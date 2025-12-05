@@ -1,17 +1,20 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
-  inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+    inputs.dankMaterialShell.homeModules.dankMaterialShell.default
   ];
 
   programs.dankMaterialShell = {
-  enable = true;
+    enable = true;
 
-  default.settings = {
-    theme = "dark";
-    dynamicTheming = true;
-   };
+    default.settings = {
+      theme = "dark";
+      dynamicTheming = true;
+    };
   };
 
   home.username = "elghazaly";
@@ -26,7 +29,7 @@
   };
 
   programs.home-manager.enable = true;
-  
+
   programs.emacs = {
     enable = true;
     extraPackages = epkgs: [
