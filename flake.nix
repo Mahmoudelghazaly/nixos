@@ -6,7 +6,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-      dgop = {
+    dgop = {
       url = "github:AvengeMedia/dgop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -15,27 +15,29 @@
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.dgop.follows = "dgop";
-   };
+    };
   };
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
- {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-           system = "x86_64-linux";
-          # specialArgs = { inherit inputs; };
-           modules = [
-            ./configuration.nix
-            home-manager.nixosModules.home-manager
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: {
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./configuration.nix
+        home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.elghazaly = import ./home.nix;
+            users.elghazaly = ./home.nix;
             backupFileExtension = "backup";
             extraSpecialArgs = {
-              inherit inputs;   
+              inherit inputs;
             };
           };
-
         }
       ];
     };
